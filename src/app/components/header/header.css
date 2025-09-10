@@ -1,0 +1,29 @@
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1030; 
+}
+
+
+body {
+  padding-top: 70px; 
+}
+
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.nav-link {
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+.btn-outline-light {
+  font-size: 0.9rem;
+  padding: 0.25rem 0.75rem;
+}

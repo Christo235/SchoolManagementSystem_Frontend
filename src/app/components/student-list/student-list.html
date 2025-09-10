@@ -1,0 +1,45 @@
+<div class="container">
+  <h2 class="text-center mb-4">Students List</h2>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover shadow-sm">
+      <thead class="table-primary text-center">
+        <tr>
+          <th>Sl.No</th>
+          <th>StudentId</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>DOB</th>
+          <th>Gender</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Qualifications</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let s of students; let i = index" class="align-middle text-center">
+          <td>{{ i + 1 }}</td>
+          <td>{{ s.studentId }}</td>
+          <td>{{ s.firstName }} {{ s.lastName }}</td>
+          <td>{{ s.age }}</td>
+          <td>{{ s.dob | date:'shortDate' }}</td>
+          <td>{{ s.gender }}</td>
+          <td>{{ s.email }}</td>
+          <td>{{ s.phoneNumber }}</td>
+          <td class="text-start">
+            <ul class="list-unstyled mb-0">
+              <li *ngFor="let q of s.qualifications">
+                <strong>{{ q.courseName }}</strong> - {{ q.university }} ({{ q.yearOfPassing }}) - {{ q.percentage }}%
+              </li>
+            </ul>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-sm btn-warning me-2" (click)="editStudent(s)">Edit</button>
+            <button class="btn btn-sm btn-danger" (click)="deleteStudent(s.studentId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

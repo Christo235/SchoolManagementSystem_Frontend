@@ -1,0 +1,127 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">{{ studentId ? 'Edit Student' : 'Student Registration' }}</h2>
+  <form [formGroup]="registerForm" (ngSubmit)="submit()">
+
+
+    <div class="row mb-3">
+      <div class="col">
+        <label>First Name *</label>
+        <input type="text" class="form-control" formControlName="firstName">
+        <div *ngIf="registerForm.get('firstName')?.touched && registerForm.get('firstName')?.invalid"
+          class="text-danger">
+          First Name is required
+        </div>
+      </div>
+
+      <div class="col">
+        <label>Last Name</label>
+        <input type="text" class="form-control" formControlName="lastName">
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col">
+        <label>Age *</label>
+        <input type="number" class="form-control" formControlName="age">
+        <div *ngIf="registerForm.get('age')?.touched && registerForm.get('age')?.invalid" class="text-danger">
+          Age is required
+        </div>
+      </div>
+
+      <div class="col">
+        <label>DOB *</label>
+        <input type="date" class="form-control" formControlName="dob">
+        <div *ngIf="registerForm.get('dob')?.touched && registerForm.get('dob')?.invalid" class="text-danger">
+          DOB is required
+        </div>
+      </div>
+
+      <div class="col">
+        <label>Gender *</label>
+        <select class="form-control" formControlName="gender">
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        <div *ngIf="registerForm.get('gender')?.touched && registerForm.get('gender')?.invalid" class="text-danger">
+          Gender is required
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col">
+        <label>Email *</label>
+        <input type="email" class="form-control" formControlName="email">
+        <div *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.invalid" class="text-danger">
+          Valid Email is required
+        </div>
+      </div>
+
+      <div class="col">
+        <label>Phone Number *</label>
+        <input type="text" class="form-control" formControlName="phoneNumber">
+        <div *ngIf="registerForm.get('phoneNumber')?.touched && registerForm.get('phoneNumber')?.invalid"
+          class="text-danger">
+          Phone Number is required
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col">
+        <label>Username *</label>
+        <input type="text" class="form-control" formControlName="username">
+        <div *ngIf="registerForm.get('username')?.touched && registerForm.get('username')?.invalid" class="text-danger">
+          Username is required
+        </div>
+      </div>
+
+      <div class="col">
+        <label>Password *</label>
+        <input type="password" class="form-control" formControlName="password">
+        <div *ngIf="registerForm.get('password')?.touched && registerForm.get('password')?.invalid" class="text-danger">
+          Password is required
+        </div>
+      </div>
+    </div>
+
+
+    <div formArrayName="qualifications" class="mb-3">
+      <div *ngFor="let qual of qualifications.controls; let i = index" [formGroupName]="i"
+        class="border p-3 mb-2 rounded">
+        <h5>Qualification {{ i + 1 }}</h5>
+        <div class="row mb-2">
+          <div class="col">
+            <label>Course Name</label>
+            <input type="text" class="form-control" formControlName="courseName">
+          </div>
+          <div class="col">
+            <label>University</label>
+            <input type="text" class="form-control" formControlName="university">
+          </div>
+        </div>
+
+        <div class="row mb-2">
+          <div class="col">
+            <label>Year of Passing</label>
+            <input type="number" class="form-control" formControlName="yearOfPassing">
+          </div>
+          <div class="col">
+            <label>Percentage</label>
+            <input type="number" class="form-control" formControlName="percentage">
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-danger" (click)="removeQualification(i)"
+          *ngIf="qualifications.length > 1">Remove</button>
+      </div>
+    </div>
+
+    <button type="button" class="btn btn-primary mb-3" (click)="addQualification()">Add Qualification</button>
+    <br>
+    <h2>{{ studentId ? 'Edit Student' : 'Student Registration' }}</h2>
+    <button type="submit" class="btn btn-success">{{ studentId ? 'Update' : 'Register' }}</button>
+
+  </form>
+</div>

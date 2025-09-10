@@ -1,0 +1,24 @@
+.container {
+  max-width: 900px;
+}
+
+h2 {
+  color: #007bff;
+}
+
+label {
+  font-weight: 500;
+}
+
+input.ng-touched.ng-invalid,
+select.ng-touched.ng-invalid {
+  border-color: red;
+}
+
+.border {
+  border: 1px solid #dee2e6 !important;
+}
+
+.btn {
+  margin-right: 5px;
+}
